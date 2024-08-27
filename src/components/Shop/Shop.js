@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 
 
 const Shop = () => {
-    const first=fakeData.slice(0,10);
+    const first=fakeData.slice(0,10);     //DATA LOAD FROM API
    
    const [products,setProducts]= useState(first);
 
