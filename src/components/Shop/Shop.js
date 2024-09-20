@@ -65,7 +65,7 @@ else
     return (
         <div className="twin-container">
             <div className="product-container">
-          
+               
  
             {
                 products.map(pd => <Product

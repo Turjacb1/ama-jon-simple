@@ -2,6 +2,11 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import './Shipment.css';
 import { UserContext } from '../../App';
+import ProcessPayment from '../ProcessPayment/ProcessPayment';
+
+
+
+
 
 
 
@@ -12,14 +17,16 @@ const Shipment = () => {
     watch,
     formState: { errors },
   } = useForm()
-  const [loggedInUser,setLoggedInUser]=useContext(UserContext);
+  const [loggedInUser]=useContext(UserContext);
 
   const onSubmit = (data) => console.log(data)
 
   console.log(watch("example")) 
   return (
    
-    <form  className="ship-form" onSubmit={handleSubmit(onSubmit)}>
+    <div className="row">
+      <div className="col-md-6">
+      <form  className="ship-form" onSubmit={handleSubmit(onSubmit)}>
       
       
 
@@ -48,6 +55,14 @@ const Shipment = () => {
 
       <input type="submit" />
     </form>
+      </div>
+      <div className="col-md-6">
+       <ProcessPayment></ProcessPayment>
+      </div>
+
+    </div>
+
+    
   )
 };
 
