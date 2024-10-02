@@ -9,7 +9,6 @@ import ProcessPayment from '../ProcessPayment/ProcessPayment';
 
 
 
-
 const Shipment = () => {
   const {
     register,

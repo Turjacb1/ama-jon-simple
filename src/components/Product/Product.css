@@ -1,23 +1,80 @@
-.product
-{
-    display:flex;
-    border-bottom: 1px solid lightgray;
+/* Product.css */
+
+.product {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.product-image img {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 10px;
+}
+
+.product-name a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.product-name a:hover {
+    color: #e74c3c;
+}
+
+.product-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.product-stock {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.main-button {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.main-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.main-button .fa-envelope {
     margin-right: 10px;
-    padding-bottom: 10px;
-}
-.product-name
-{
-    color:brown;
-    font-size: 420;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.main-button
-{
-    background-color: yellow;
-    width:150px;
-    height: 35px;
-    border:1px solid black;
-    border-radius: 20px;
-    cursor:pointer;
 }
