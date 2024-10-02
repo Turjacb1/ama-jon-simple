@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import logo from '../../images/favicon.ico';
-import './Header.css'
+import logo from '../../images/AMA-JOHN.png';
+import './Header.css';
 import { UserContext } from '../../App';
 const Header = () => {
     const [loggedInUser,setLoggedInUser]=useContext(UserContext);

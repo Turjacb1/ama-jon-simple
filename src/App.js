@@ -239,17 +239,25 @@ import Login from "./components/Login/Login";
 import Shipment from "./components/Shipment/Shipment";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ProcessPayment from "./components/ProcessPayment/ProcessPayment";
+import Welcome from "./components/Welcome/Welcome";
 
 export const UserContext = React.createContext();
-
 
 function App(props) {
   const [loggedInUser, setLoggedInUser] = React.useState({});
 
   const router = createBrowserRouter([
     {
+      path: "/",
+      element: <Welcome /> // Set Welcome page as default route
+    },
+    {
       path: "/shop",
       element: <Shop />
+    },
+    {
+      path: "/welcome",
+      element: <Welcome />
     },
     {
       path: "/review",
@@ -267,14 +275,10 @@ function App(props) {
       path: "/login",
       element: <Login />
     },
-
-
     {
       path: "/processpayment",
-      element: <ProcessPayment/>
+      element: <ProcessPayment />
     },
-
-    
     {
       path: "/shipment",
       element: (
@@ -282,10 +286,6 @@ function App(props) {
           <Shipment />
         </PrivateRoute>
       )
-    },
-    {
-      path: "/",
-      element: <Shop />
     },
     {
       path: "product/:productkey",
@@ -299,7 +299,6 @@ function App(props) {
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      
       <Header />
       <RouterProvider router={router} />
     </UserContext.Provider>
@@ -307,6 +306,7 @@ function App(props) {
 }
 
 export default App;
+
 
 
 

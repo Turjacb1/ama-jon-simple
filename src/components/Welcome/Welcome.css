@@ -1,0 +1,107 @@
+.welcome-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f39c12, #f1c40f); /* Vibrant gradient background */
+    animation: fadeInBackground 1s ease-in-out; /* Fade-in background animation */
+}
+
+.welcome-content {
+    text-align: center;
+    background-color: #fff;
+    padding: 50px 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    animation: fadeInContent 1.2s ease-in-out; /* Fade-in content animation */
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    color: #e67e22;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: slideIn 1s ease-out; /* Slide-in animation for title */
+}
+
+.welcome-message {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    animation: fadeInMessage 1.5s ease-in-out; /* Fade-in animation for message */
+}
+
+.welcome-button {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: bounceIn 1.5s ease-in-out; /* Bounce-in animation for button */
+}
+
+.welcome-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-5px) scale(1.05); /* Slightly scale on hover */
+}
+
+/* Animations */
+@keyframes fadeInBackground {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeInContent {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    0% { transform: translateX(-50px); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInMessage {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.8); opacity: 0; }
+    60% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+/* Additional Animation for Title */
+.welcome-title:hover {
+    animation: titlePulse 0.6s infinite; /* Add a pulse effect on hover */
+}
+
+@keyframes titlePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+
+    .welcome-message {
+        font-size: 1rem;
+    }
+
+    .welcome-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
