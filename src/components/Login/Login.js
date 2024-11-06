@@ -232,13 +232,13 @@
 
 
 
-
 import React, { useContext, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import { UserContext } from '../../App';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { Container, Form, Button, Alert, InputGroup } from 'react-bootstrap';  // Import InputGroup
+import { FaEye, FaEyeSlash } from 'react-icons/fa';  // Import icons for showing and hiding password
 import firebaseConfig from './FirebaseConfig';
 import { getAuth, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 
@@ -246,6 +246,7 @@ firebase.initializeApp(firebaseConfig);
 
 function Login() {
   const [newUser, setNewUser] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);  // State to manage password visibility
   const [user, setUser] = useState({
     isSignedIn: false,
     name: '',
@@ -256,10 +257,6 @@ function Login() {
     success: false,
     message: ''
   });
-
-
-
-
 
   const [loggedInUser, setLoggedInUser] = useContext(UserContext);
   const navigate = useNavigate();
@@ -287,9 +284,6 @@ function Login() {
       });
   };
 
-
-
-
   const handleSignOut = () => {
     firebase.auth().signOut()
       .then(() => {
@@ -308,8 +302,6 @@ function Login() {
         console.log(error);
       });
   };
-
-
 
   const handleBlur = (event) => {
     let isFormValid = true;
@@ -330,8 +322,6 @@ function Login() {
       setUser(newUserInfo);
     }
   };
-
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -355,8 +345,6 @@ function Login() {
         });
     }
 
-
-
     const verifyEmail = () => {
       const auth = getAuth();
       sendEmailVerification(auth.currentUser)
@@ -364,8 +352,6 @@ function Login() {
           // Email verification sent
         });
     };
-
-
 
     if (!newUser && user.email && user.password) {
       firebase.auth().signInWithEmailAndPassword(user.email, user.password)
@@ -386,8 +372,6 @@ function Login() {
     }
   };
 
-
-
   const handlePasswordReset = () => {
     if (!user.email) {
       const newUserInfo = { ...user };
@@ -396,8 +380,6 @@ function Login() {
       return;
     }
 
-
-    
     const auth = getAuth();
     sendPasswordResetEmail(auth, user.email)
       .then(() => {
@@ -415,10 +397,9 @@ function Login() {
       });
   };
 
-
-
-
-
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
 
   return (
     <Container style={{ padding: '20px', borderRadius: '10px', backgroundColor: '#f8f9fa', textAlign: 'center' }}>
@@ -457,14 +438,24 @@ function Login() {
         </Form.Group>
         <Form.Group>
           <Form.Label>Password</Form.Label>
-          <Form.Control type="password" name="password" onBlur={handleBlur} placeholder="Password" style={{ marginBottom: '20px' }} />
+          <InputGroup>
+            <Form.Control
+              type={passwordVisible ? "text" : "password"}
+              name="password"
+              onBlur={handleBlur}
+              placeholder="Password"
+              style={{ marginBottom: '20px' }}
+            />
+            <InputGroup.Text onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }}>
+              {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+            </InputGroup.Text>
+          </InputGroup>
         </Form.Group>
         <Button variant="success" type="submit" style={{ width: '100%' }}>
           {newUser ? 'Sign Up' : 'Sign In'}
         </Button>
       </Form>
 
-      {/* Forgot Password Button */}
       {!newUser && (
         <Button variant="link" onClick={handlePasswordReset} style={{ marginTop: '20px' }}>
           Forgot Password?
@@ -482,6 +473,7 @@ function Login() {
 }
 
 export default Login;
+
 
 
 

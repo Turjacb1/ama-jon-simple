@@ -1,5 +1,8 @@
+
+
 {
   "hosting": {
+    "site": "ama-john-second",
     "public": "build",
     "ignore": [
       "firebase.json",
